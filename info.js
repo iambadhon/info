@@ -1,13 +1,13 @@
 $(function () {
-    //============================preloader section start============================//
+    //================preloader start================//
     $(window).on("load", function () {
         $(".preloader").delay(500).fadeOut(500);
     });
 
-    //============================preloader section end============================//
+    //================preloader end================//
 
 
-    //============================scroll to top section start============================//
+    //================scroll top start================//
     $(".scroll_to_top").click(function () {
         $("html,css").animate({
             scrollTop: 0,
@@ -30,10 +30,34 @@ $(function () {
         // }
     });
 
-    //=====================scroll to top section end=====================//
+    //================scroll top end================//
 
 
-    //=====================sticky menu section start=====================//
+    //================nav hide start================//
+    let navBar = document.querySelectorAll('.nav-link');
+    let navCollapse = document.querySelector('.navbar-collapse.collapse');
+    navBar.forEach(function (a) {
+        a.addEventListener("click", function () {
+            navCollapse.classList.remove("show");
+        })
+    })
+    //================nav hide end================//
+
+
+    //=====================sticky nav start=====================//
+    $(window).scroll(function () {
+        var scrolling = $(this).scrollTop()
+
+        if (scrolling > 150) {
+            $(".main_nav").addClass("nav_sticky");
+        } else {
+            $(".main_nav").removeClass("nav_sticky");
+        }
+    });
+    //=====================sticky nav end=====================//
+
+
+    //================sticky nav start================//
     $(".sticky_menu").waypoint(function (direction) {
         if (direction == "down") {
             $(".main_nav").addClass("nav_sticky");
@@ -42,10 +66,10 @@ $(function () {
         }
     });
 
-    //=====================sticky menu section end=====================//
+    //================sticky nav end================//
 
 
-    //============================animation scroll section start============================//
+    //================smooth scroll start================//
 
     $("a").on('click', function (event) {
         if (this.hash !== "") {
@@ -104,6 +128,6 @@ $(function () {
         }
     });
 
-    //============================animation scroll section end============================//
+    //================smooth scroll end================//
 
 });
